@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Rainfall Prediction Dashboard</title>
+    <title>Rainfall Prediction System</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
@@ -9,10 +9,11 @@
   </head>
   <body>
     <div class="container">
-      <h1>🌧 Rainfall Prediction Dashboard</h1>
-      <p>Machine Learning based Rain Tomorrow Prediction System</p>
+      <h1>🌧 Rainfall Tomorrow Prediction</h1>
 
-      <h2>Enter Weather Details</h2>
+      <div class="accuracy">
+        Model Accuracy: <strong>{{ accuracy }}%</strong>
+      </div>
 
       <form action="/predict" method="post">
         <input
@@ -22,7 +23,6 @@
           placeholder="Average Temperature"
           required
         />
-
         <input
           type="number"
           step="any"
@@ -30,7 +30,6 @@
           placeholder="Minimum Temperature"
           required
         />
-
         <input
           type="number"
           step="any"
@@ -38,7 +37,6 @@
           placeholder="Wind Speed"
           required
         />
-
         <input
           type="number"
           step="any"
@@ -46,21 +44,24 @@
           placeholder="Air Pressure"
           required
         />
-
         <input
           type="number"
           step="any"
           name="rainfall"
-          placeholder="Today's Rainfall"
+          placeholder="Rainfall Today"
           required
         />
 
-        <button type="submit">Predict Rain Tomorrow</button>
+        <button type="submit">Predict</button>
       </form>
 
-      <h2>Exploratory Data Analysis</h2>
+      {% if prediction %}
+      <div class="result">Prediction: <strong>{{ prediction }}</strong></div>
+      {% endif %}
 
-      <div class="eda-container">
+      <h2>EDA Visualizations</h2>
+
+      <div class="plots">
         <img src="{{ url_for('static', filename='rainfall_dist.png') }}" />
         <img src="{{ url_for('static', filename='correlation.png') }}" />
         <img src="{{ url_for('static', filename='temp_vs_rain.png') }}" />
