@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Rainfall Prediction Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🌧 Rainfall Prediction Dashboard</h1>
+      <p>Machine Learning based Rain Tomorrow Prediction System</p>
+
+      <h2>Enter Weather Details</h2>
+
+      <form action="/predict" method="post">
+        <input
+          type="number"
+          step="any"
+          name="avg_temp"
+          placeholder="Average Temperature"
+          required
+        />
+
+        <input
+          type="number"
+          step="any"
+          name="min_temp"
+          placeholder="Minimum Temperature"
+          required
+        />
+
+        <input
+          type="number"
+          step="any"
+          name="wind_speed"
+          placeholder="Wind Speed"
+          required
+        />
+
+        <input
+          type="number"
+          step="any"
+          name="air_pressure"
+          placeholder="Air Pressure"
+          required
+        />
+
+        <input
+          type="number"
+          step="any"
+          name="rainfall"
+          placeholder="Today's Rainfall"
+          required
+        />
+
+        <button type="submit">Predict Rain Tomorrow</button>
+      </form>
+
+      <h2>Exploratory Data Analysis</h2>
+
+      <div class="eda-container">
+        <img src="{{ url_for('static', filename='rainfall_dist.png') }}" />
+        <img src="{{ url_for('static', filename='correlation.png') }}" />
+        <img src="{{ url_for('static', filename='temp_vs_rain.png') }}" />
+      </div>
+    </div>
+  </body>
+</html>

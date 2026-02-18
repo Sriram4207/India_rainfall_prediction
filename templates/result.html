@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Prediction Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Prediction Result</h1>
+
+      <h2>Will it Rain Tomorrow?</h2>
+
+      <div class="result">{{ prediction }}</div>
+
+      <br />
+      <a href="/">Go Back</a>
+    </div>
+  </body>
+</html>
